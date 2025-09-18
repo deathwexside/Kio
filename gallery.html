@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея — Kioshikins</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- LightGallery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
+    <style>
+        .folders {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 30px;
+          margin-top: 40px;
+        }
+        .folder {
+          width: 200px;
+          height: 200px;
+          background: rgba(179,125,255,0.1);
+          border: 2px solid #b37dff;
+          border-radius: 15px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: bold;
+          color: #fff;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+        .folder:hover {
+          background: #b37dff;
+          box-shadow: 0 0 20px #b37dff;
+          transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+<div id="particles-js"></div>
+
+<nav>
+    <a href="index.html">Главная</a>
+    <a href="about.html">Обо мне</a>
+    <a href="streams.html">Стримы</a>
+    <a href="gallery.html">Галерея</a>
+</nav>
+
+<main>
+    <h1>Галерея</h1>
+    <p>Выбери папку 📂 и смотри фото прямо на сайте</p>
+
+    <div class="folders">
+        <div class="folder" onclick="openGallery('artworks')">🎨 Арты</div>
+        <div class="folder" onclick="openGallery('screenshots')">📸 Скриншоты</div>
+    </div>
+
+    <!-- Скрытые блоки с фото -->
+    <div id="artworks" style="display:none">
+        <a href="gallery/artworks/1.png"></a>
+        <a href="gallery/artworks/2.png"></a>
+    </div>
+
+    <div id="screenshots" style="display:none">
+        <a href="gallery/photo/1.png"></a>
+        <a href="gallery/photo/2.png"></a>
+    </div>
+</main>
+
+<footer>
+    Галерея фан-арта и скринов 💜
+</footer>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.umd.min.js"></script>
+
+<script>
+    function openGallery(id) {
+      const el = document.getElementById(id);
+      const gallery = lightGallery(el, {
+        plugins: [lgZoom, lgThumbnail],
+        speed: 400,
+        download: false
+      });
+      gallery.openGallery(); // <<< Сразу открываем
+    }
+</script>
+</body>
+</html>
